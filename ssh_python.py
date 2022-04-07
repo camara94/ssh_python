@@ -18,10 +18,11 @@ SESSION.connect(host, port=22,
                 look_for_keys=False,
                 allow_agent=False)
 DEVICE_ACCESS = SESSION.invoke_shell()
+# somme command to execute on my server
+# I change current directory to monapi directory on my server
 DEVICE_ACCESS.send(b'cd /var/www/monapi\n')
+# I print all files and sub directory to monapi
 DEVICE_ACCESS.send(b'ls -la\n')
-#DEVICE_ACCESS.send(b'term length 0\n')
-#DEVICE_ACCESS.send(b'show run\n')
 time.sleep(1)
 output = (DEVICE_ACCESS.recv(65000).decode('ascii'))
 print(output)
